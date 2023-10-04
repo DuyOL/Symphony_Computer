@@ -11,7 +11,7 @@ import ButtonInputSearch from '../ButtonInputSearch/ButtonInputSearch';
 const HeaderComponent = () => {
   return (
     <div>
-       <WrapperHeader gutter={16}>
+       <WrapperHeader>
         <Col span={6}>
           <WrapperTextHeader>
              SYMPHONY
@@ -29,7 +29,7 @@ const HeaderComponent = () => {
           <WrapperHeaderAccount>
              <UserOutlined style={{fontSize: '30px'}} />
             <div>
-              <WrapperTextHeaderSmall>Đăng nhập/Đăng ký</WrapperTextHeaderSmall>
+              <WrapperTextHeaderSmall>Đăng nhập / Đăng ký</WrapperTextHeaderSmall>
               <div>
                 <WrapperTextHeaderSmall>Tài khoản</WrapperTextHeaderSmall>
                 <CaretDownOutlined />
