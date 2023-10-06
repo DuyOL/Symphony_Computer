@@ -14,7 +14,7 @@ const HeaderComponent = () => {
        <WrapperHeader>
         <Col span={6}>
           <WrapperTextHeader>
-             SYMPHONY
+             SYMPHONY COMPUTER
           </WrapperTextHeader>
         </Col>
         <Col span={12}>

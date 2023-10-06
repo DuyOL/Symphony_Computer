@@ -1,9 +1,12 @@
 import React from 'react';
 import { WrapperTypeProduct } from './Style';
-import  slider1  from '../../assets/Images/Slider1.jpg';
-import  slider2  from '../../assets/Images/Slider2.jpg';
+import slider from '../../assets/Images/Slider.png';
+import slider3 from '../../assets/Images/Slider3.png';
+import slider4 from '../../assets/Images/Slider4.jpg';
 import TypeProduct from '../../components/TypeProduct/TypeProduct'
 import SliderComponent from '../../components/SliderComponent/SliderComponent'
+import CardComponent from '../../components/CardComponent/CardComponent';
+import NavbarComponent from '../../components/NavbarComponent/NavbarComponent';
 
 const HomePage = () => {
   const arr = ['Màn Hình', 'Điện Thoại', 'Laptop', 'Ổ Cứng' , 'Card đồ họa']
@@ -18,8 +21,13 @@ const HomePage = () => {
       })}
       </WrapperTypeProduct>
     </div>
-      <div id="container" style={{backgroundColor: '#efefef' ,padding:'0 120px'}}>
-          <SliderComponent arrImages={ [slider1 , slider2] }/> 
+      <div id="container" style={{backgroundColor: '#efefef' ,padding:'0 120px', height:"1000px"}}>
+        <SliderComponent arrImages={[slider3, slider, slider4]} /> 
+        
+        <div style={{marginTop: "20px" , display: "flex" , alignItems: "center" , gap:"20px"}}>
+          <CardComponent />
+        </div>
+        <NavbarComponent />
       </div>
     </>
   )
