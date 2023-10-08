@@ -1,5 +1,5 @@
 import React from 'react';
-import { WrapperButtonMore, WrapperTypeProduct } from './Style';
+import { WrapperButtonMore, WrapperProducts, WrapperTypeProduct } from './Style';
 import slider from '../../assets/Images/Slider.png';
 import slider3 from '../../assets/Images/Slider3.png';
 import slider4 from '../../assets/Images/Slider4.jpg';
@@ -24,7 +24,7 @@ const HomePage = () => {
     </div>
       <div id="container" style={{backgroundColor: '#efefef',padding: '0 120px', height: "1000px",}}>
         <SliderComponent arrImages={[slider3, slider, slider4]} /> 
-        <div style={{marginTop: "20px" , display: "flex" , alignItems: "center" ,gap:'30px' ,flexWrap:'wrap'}}>
+        <WrapperProducts>
           <CardComponent />
           <CardComponent />
           <CardComponent />
@@ -32,7 +32,7 @@ const HomePage = () => {
           <CardComponent />
           <CardComponent />
           <CardComponent />
-        </div>
+        </WrapperProducts>
         <div style={{display:'flex' , width: '100%' ,justifyContent:'center', marginTop: '10px'}}>
            <WrapperButtonMore textButton="Xem thêm" type="outline" styleButton={{
           border: '1px solid rgb(11 , 116, 229)',
