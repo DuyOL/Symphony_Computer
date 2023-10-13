@@ -56,14 +56,14 @@ export const WrapperQualityProduct = styled.div`
   display: flex;
   gap: 4px;
   align-items: center;
-  border: 1px solid red;
-  width: 100px;
+  border: 1px solid #ccc;
+  width: 120px;
   border-radius:4px;
   margin-left: 10px
 `
 export const WrapperInputNumber = styled(InputNumber)`
-    &.ant-input-number ant-input-number-sm{
-      width: 40px;
-    }
+    &.ant-input-number-handler-wrap{
+      display: none;
+   }
 `
 
