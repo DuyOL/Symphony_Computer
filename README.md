@@ -31,5 +31,3 @@ rafce : Create a new Component
 ### "styled-components"
 
 ### "web-vitals"
-
-},
