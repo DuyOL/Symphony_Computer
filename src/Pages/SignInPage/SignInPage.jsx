@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { WrapperContainerLeft, WrapperContainerRight, WrapperTextLight } from './style'
 import InputForm from '../../components/InputForm/InputForm'
 import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 import LogoLogin from '../../assets/Images/Logo-login.png'
 import {  Image } from 'antd'
+import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons'
 const SignInPage = () => {
+  const [isShowPassword, setIsShowPassword] = useState(false)
   return (
     <div style={{
       // div phía này ôm toàn bộ left and Right
@@ -20,7 +22,28 @@ const SignInPage = () => {
             <h1 style={{fontSize:"24px"}}>Xin Chào ,</h1>
         <p style={{fontSize:"16px"}}>Đăng nhập hoặc tạo tài khoản</p>
           <InputForm style={{marginBottom: '10px'}} placeholder="...@gmail.com" />
-          <InputForm placeholder="password"/>
+          <div style={{position: 'relative'}}>
+              <span
+                style={{
+                  zIndex:10,
+                  position:'absolute',
+                  top: '10px',
+                  right:'8px'
+                }}
+              >{
+                isShowPassword ? (
+                  <EyeFilled />
+                ): (
+                  <EyeInvisibleFilled />
+                )
+              }
+
+              </span>
+              <InputForm
+              placeholder="password"
+              type={isShowPassword ? "text" : "password"}
+            />
+          </div>
         <ButtonComponent
                       bordered={false}
                       size={40}
@@ -35,8 +58,8 @@ const SignInPage = () => {
                       textButton={'Đăng nhập'}
                       styleTextButton={{color: '#fff' , fontSize:'15px',fontWeight:'700'}}
           ></ButtonComponent>
-          <p> <WrapperTextLight>Quên mật khẩu ?</WrapperTextLight> </p>
-          <p style={{fontSize:"14px"}}>Chưa có tài khoản <WrapperTextLight>Tạo tài khoản</WrapperTextLight></p>
+          <p style={{cursor:'pointer'}}> <WrapperTextLight>Quên mật khẩu ?</WrapperTextLight> </p>
+          <p style={{fontSize:"14px"}}>Chưa có tài khoản <WrapperTextLight style={{cursor:'pointer'}}>Tạo tài khoản</WrapperTextLight></p>
       </WrapperContainerLeft>
 
       {/* Bên phải */}

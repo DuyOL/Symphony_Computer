@@ -8,7 +8,6 @@ export const WrapperTypeProduct = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border-bottom: 1px solid red;
 ` 
 export const WrapperButtonMore = styled(ButtonComponent)`
    &:hover {
@@ -23,8 +22,7 @@ export const WrapperButtonMore = styled(ButtonComponent)`
 `
 export const WrapperProducts = styled.div`
    display: flex;
-   justify-content: center;
-   gap: 15px;
+   gap: 14px;
    margin-top: 20px;
    flex-wrap: wrap;
 `

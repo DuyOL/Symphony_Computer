@@ -6,14 +6,12 @@ import slider4 from '../../assets/Images/Slider4.jpg';
 import TypeProduct from '../../components/TypeProduct/TypeProduct'
 import SliderComponent from '../../components/SliderComponent/SliderComponent'
 import CardComponent from '../../components/CardComponent/CardComponent';
-// import NavbarComponent from '../../components/NavbarComponent/NavbarComponent';
-// import ButtonComponent from '../../components/ButtonComponent/ButtonComponent';
 
 const HomePage = () => {
   const arr = ['Màn Hình', 'Điện Thoại', 'Laptop', 'Ổ Cứng' , 'Card đồ họa']
   return (
     <>
-       <div style={{ padding: '0 120px' }}>
+       <div style={{ width: '1270px' , margin:'0 auto'}}>
       <WrapperTypeProduct>
       {arr.map((item) => {
         return (
@@ -22,7 +20,8 @@ const HomePage = () => {
       })}
       </WrapperTypeProduct>
     </div>
-      <div id="container" style={{backgroundColor: '#efefef',padding: '0 120px', height: "1000px",}}>
+    <div className='body' style={{ width: '100%', backgroundColor: '#efefef', }}>
+      <div id="container" style={{height: "1000px", width:'1270px' , margin: '0 auto'}}>
         <SliderComponent arrImages={[slider3, slider, slider4]} /> 
         <WrapperProducts>
           <CardComponent />
@@ -43,6 +42,7 @@ const HomePage = () => {
         </div>
         {/* <NavbarComponent /> */}
       </div>
+    </div>
     </>
   )
 }
