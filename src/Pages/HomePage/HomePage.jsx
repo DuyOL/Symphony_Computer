@@ -1,6 +1,5 @@
 import React from 'react';
 import { WrapperButtonMore, WrapperProducts, WrapperTypeProduct } from './Style';
-import slider from '../../assets/Images/Slider.png';
 import slider3 from '../../assets/Images/Slider3.png';
 import slider4 from '../../assets/Images/Slider4.jpg';
 import TypeProduct from '../../components/TypeProduct/TypeProduct'
@@ -22,7 +21,7 @@ const HomePage = () => {
     </div>
     <div className='body' style={{ width: '100%', backgroundColor: '#efefef', }}>
       <div id="container" style={{height: "1000px", width:'1270px' , margin: '0 auto'}}>
-        <SliderComponent arrImages={[slider3, slider, slider4]} /> 
+        <SliderComponent arrImages={[slider3, slider4]} /> 
         <WrapperProducts>
           <CardComponent />
           <CardComponent />
