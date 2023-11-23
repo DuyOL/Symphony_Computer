@@ -5,8 +5,24 @@ import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 import LogoLogin from '../../assets/Images/Logo-login.png'
 import {  Image } from 'antd'
 import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons'
+import { useNavigate } from 'react-router-dom'
 const SignInPage = () => {
   const [isShowPassword, setIsShowPassword] = useState(false)
+  const [email ,setEmail] = useState('');
+  const [password ,setPassword] = useState('')
+  const navigate = useNavigate()
+  const handleNavigateSignUp = () => {
+    navigate('/sign-up')
+  }
+  const handleOnchangeEmail = (value) => {
+    setEmail(value)
+}
+const handleOnchangePassword = (value) => {
+  setPassword(value)
+}
+const handleSignIn = () => {
+  console.log('sign-in' , email , password)
+}
   return (
     <div style={{
       // div phía này ôm toàn bộ left and Right
@@ -21,9 +37,11 @@ const SignInPage = () => {
       <WrapperContainerLeft>
             <h1 style={{fontSize:"24px"}}>Xin Chào ,</h1>
         <p style={{fontSize:"16px"}}>Đăng nhập hoặc tạo tài khoản</p>
-          <InputForm style={{marginBottom: '10px'}} placeholder="...@gmail.com" />
+          <InputForm style={{marginBottom: '10px'}} placeholder="...@gmail.com"
+          value={email} onChange = {handleOnchangeEmail} />
           <div style={{position: 'relative'}}>
               <span
+              onClick={() => setIsShowPassword(!isShowPassword) }
                 style={{
                   zIndex:10,
                   position:'absolute',
@@ -42,10 +60,11 @@ const SignInPage = () => {
               <InputForm
               placeholder="password"
               type={isShowPassword ? "text" : "password"}
-            />
+              value={password} onChange = {handleOnchangePassword} />
           </div>
         <ButtonComponent
-                      bordered={false}
+                      disabled={!email.length || !password.length }
+                      onClick={handleSignIn}
                       size={40}
                       styleButton={{
                           background: 'rgb(255,57,69)',
@@ -59,7 +78,7 @@ const SignInPage = () => {
                       styleTextButton={{color: '#fff' , fontSize:'15px',fontWeight:'700'}}
           ></ButtonComponent>
           <p style={{cursor:'pointer'}}> <WrapperTextLight>Quên mật khẩu ?</WrapperTextLight> </p>
-          <p style={{fontSize:"14px"}}>Chưa có tài khoản <WrapperTextLight style={{cursor:'pointer'}}>Tạo tài khoản</WrapperTextLight></p>
+          <p style={{fontSize:"14px"}}>Chưa có tài khoản <WrapperTextLight onClick={handleNavigateSignUp} style={{cursor:'pointer'}}>Tạo tài khoản</WrapperTextLight></p>
       </WrapperContainerLeft>
 
       {/* Bên phải */}

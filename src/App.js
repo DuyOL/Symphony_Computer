@@ -4,7 +4,7 @@ import React, { Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DefaultComponent from "./components/DefaultComponent/DefaultComponent";
 import  {routes} from "./routers";
-import { useQuery } from "react-query";
+// import { useQuery } from "react-query";
 // import { ReactQueryDevtools } from 'react-query/devtools'
 
 function App() {
@@ -12,12 +12,12 @@ function App() {
     //  useEffect(() => {
     //    fetchApi()
     //  },[])
-  const fetchApi = async () => {
-       const res = await axios.get(`${process.env.REACT_APP_API_URL}/product/get-all`)
-       return res.data
-  }
-  const query = useQuery('todos', fetchApi)
-  console.log('query',query)
+  // const fetchApi = async () => {
+  //      const res = await axios.get(`${process.env.REACT_APP_API_URL}/product/get-all`)
+  //      return res.data
+  // }
+  // const query = useQuery('todos', fetchApi)
+  // console.log('query',query)
   return (
     <div>
       <Router>
