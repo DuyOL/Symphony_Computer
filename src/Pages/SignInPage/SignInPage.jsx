@@ -6,11 +6,23 @@ import LogoLogin from '../../assets/Images/Logo-login.png'
 import {  Image } from 'antd'
 import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
+// import { useMutation } from 'react-query'
+import * as UserService from '../../services/UserService'
+import { useMutationHooks } from '../../hooks/useMutationHook'
+import Loading from '../../components/LoadingComponent/Loading'
 const SignInPage = () => {
   const [isShowPassword, setIsShowPassword] = useState(false)
   const [email ,setEmail] = useState('');
   const [password ,setPassword] = useState('')
+
   const navigate = useNavigate()
+
+  const mutation = useMutationHooks(
+    data => UserService.loginUser(data)
+  )
+  const { data , isLoading } = mutation
+
+  console.log('mutation' , mutation)
   const handleNavigateSignUp = () => {
     navigate('/sign-up')
   }
@@ -21,6 +33,10 @@ const handleOnchangePassword = (value) => {
   setPassword(value)
 }
 const handleSignIn = () => {
+  mutation.mutate({
+    email,
+    password
+  })
   console.log('sign-in' , email , password)
 }
   return (
@@ -62,6 +78,8 @@ const handleSignIn = () => {
               type={isShowPassword ? "text" : "password"}
               value={password} onChange = {handleOnchangePassword} />
           </div>
+          {data?.status === 'ERR' && <span style={{color: 'red'}}>{data?.message}</span>}
+          <Loading isLoading={isLoading}>
         <ButtonComponent
                       disabled={!email.length || !password.length }
                       onClick={handleSignIn}
@@ -77,6 +95,7 @@ const handleSignIn = () => {
                       textButton={'Đăng nhập'}
                       styleTextButton={{color: '#fff' , fontSize:'15px',fontWeight:'700'}}
           ></ButtonComponent>
+          </Loading>
           <p style={{cursor:'pointer'}}> <WrapperTextLight>Quên mật khẩu ?</WrapperTextLight> </p>
           <p style={{fontSize:"14px"}}>Chưa có tài khoản <WrapperTextLight onClick={handleNavigateSignUp} style={{cursor:'pointer'}}>Tạo tài khoản</WrapperTextLight></p>
       </WrapperContainerLeft>

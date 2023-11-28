@@ -6,6 +6,9 @@ import LogoLogin from '../../assets/Images/Logo-login.png'
 import { Image } from 'antd'
 import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
+import * as UserService from '../../services/UserService'
+import { useMutationHooks } from '../../hooks/useMutationHook'
+import Loading from '../../components/LoadingComponent/Loading'
 const SignUpPage = () => {
   const navigate = useNavigate()
   const [isShowPassword, setIsShowPassword] = useState(false)
@@ -17,6 +20,12 @@ const SignUpPage = () => {
   const handleOnchangeEmail = (value) => {
       setEmail(value)
   }
+
+  const mutation = useMutationHooks(
+    data => UserService.signUpUser(data)
+  )
+
+  const {data , isLoading} = mutation
   const handleOnchangePassword = (value) => {
     setPassword(value)
   }
@@ -27,7 +36,7 @@ const SignUpPage = () => {
     navigate('/sign-in')
   }
   const handleSignUp = () => {
-    console.log('sign-up' , email , password , confirmPassword)
+    mutation.mutate({email , password , confirmPassword})
   }
   return (
       <div style={{
@@ -92,6 +101,8 @@ const SignUpPage = () => {
               value = {confirmPassword} onChange={handleOnchangeConfirmPassword}
             />
           </div>
+          {data?.status === 'ERR' && <span style={{color: 'red'}}>{data?.message}</span>}
+          <Loading isLoading={isLoading}>
         <ButtonComponent
                       disabled={!email.length || !password.length || !confirmPassword.length}
                       onClick={handleSignUp}
@@ -107,6 +118,7 @@ const SignUpPage = () => {
                       textButton={'Đăng ký'}
                       styleTextButton={{color: '#fff' , fontSize:'15px',fontWeight:'700'}}
           ></ButtonComponent>
+          </Loading>
           <p style={{fontSize:"14px"}}>Bạn đã có tài khoản 
           <WrapperTextLight onClick={handleNavigateSignIn}>Đăng nhập </WrapperTextLight></p>
       </WrapperContainerLeft>
