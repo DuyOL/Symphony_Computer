@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
-import { WrapperContainerLeft, WrapperContainerRight, WrapperTextLight } from './style'
-import InputForm from '../../components/InputForm/InputForm'
-import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
-import LogoLogin from '../../assets/Images/Logo-login.png'
 import { Image } from 'antd'
-import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import InputForm from '../../components/InputForm/InputForm'
+import LogoLogin from '../../assets/Images/Logo-login.png'
 import * as UserService from '../../services/UserService'
 import { useMutationHooks } from '../../hooks/useMutationHook'
 import Loading from '../../components/LoadingComponent/Loading'
+import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons'
+import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
+import * as message from '../../components/Message/Message'
+import { WrapperContainerLeft, WrapperContainerRight, WrapperTextLight } from './style'
 const SignUpPage = () => {
   const navigate = useNavigate()
   const [isShowPassword, setIsShowPassword] = useState(false)
@@ -25,7 +26,16 @@ const SignUpPage = () => {
     data => UserService.signUpUser(data)
   )
 
-  const {data , isLoading} = mutation
+  const {data , isLoading , isSuccess , isError} = mutation
+
+  useEffect (() => {
+      if(isSuccess){
+        message.success()
+        handleNavigateSignIn()
+      }else if (isError) {
+        message.error()
+      }
+  }, [isSuccess,isError])
   const handleOnchangePassword = (value) => {
     setPassword(value)
   }
